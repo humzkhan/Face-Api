@@ -21,6 +21,13 @@ const database = {
             entries: 0,
             joined: new Date()
         }
+    ],
+    login: [
+        {
+            id: '987',
+            has: '',
+            email: 'john@gmail.com'
+        }
     ]
 }
 
@@ -72,6 +79,18 @@ app.put('/image', (req, res)=>{
     })
     res.status(400).json('no such user')
 })
+
+bcrypt.hash("bacon", null, null, function(err, hash) {
+    // Store hash in your password DB.
+});
+
+// Load hash from your password DB.
+bcrypt.compare("bacon", hash, function(err, res) {
+    // res == true
+});
+bcrypt.compare("veggies", hash, function(err, res) {
+    // res = false
+});
 
 app.listen(3000, ()=>{
     console.log('app is running 3000');
